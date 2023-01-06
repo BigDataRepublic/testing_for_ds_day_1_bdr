@@ -2,7 +2,9 @@ import warnings
 
 
 def number_of_positions(number_of_disks: int) -> int:
-    pass
+    number_of_positions = pow(3, number_of_disks)
+
+    return number_of_positions
 
 
 def number_of_steps_of_solution(number_of_disks: int) -> int:
