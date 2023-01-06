@@ -39,8 +39,9 @@ testpaths = [
 ]
 markers = [
 "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "parametrization_paragraph: marks tests as parametrized tests"
 ]
-addopts = "--basetemp tests/pytest_basetemp"
+addopts = "--basetemp tests/pytest_basetemp --strict-markers"
 cache_dir = "tests/.pytest_cache"
 junit_suite_name = "test_training"
 junit_family = "xunit1"

@@ -2,6 +2,8 @@ import pytest
 
 from hanoi.basics import number_of_positions
 
+pytestmark = pytest.mark.parametrization_paragraph()
+
 
 # -- Exercise 1* --
 # Test the output of def number_of_positions() from hanoi/basics.py, parametrizing over number_of_disks.
