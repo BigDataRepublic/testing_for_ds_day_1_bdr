@@ -24,6 +24,11 @@ def test_number_of_positions() -> None:
 # Implement number_of_steps_of_solution() in hanoi/basics.py, which returns the number of steps it takes to solve the
 # Tower of Hanoi with n disks. Write a test with multiple asserts, that checks if your implementation is correct if the
 # number of disks is 1, 2 or 3.
+def test_number_of_steps_of_solution() -> None:
+    number_of_disks = 3
+    result = number_of_steps_of_solution(number_of_disks=number_of_disks)
+    expected_result = 7
+    assert result == expected_result
 
 
 # -- Exercise 5 --

@@ -8,7 +8,9 @@ def number_of_positions(number_of_disks: int) -> int:
 
 
 def number_of_steps_of_solution(number_of_disks: int) -> int:
-    pass
+    number_of_steps_of_solutions = pow(2, number_of_disks) - 1
+
+    return number_of_steps_of_solutions
 
 
 class Position:
