@@ -1,7 +1,15 @@
-
+from hanoi.basics import number_of_positions
 
 # -- Exercise 1* --
 # Test the output of def number_of_positions() from hanoi/basics.py, parametrizing over number_of_disks.
+import pytest
+
+
+@pytest.mark.parametrize(
+    'number_of_disks, expected', [(1, 3), (2, 9), (3, 27)]
+)
+def test_number_of_positions(number_of_disks, expected):
+    assert number_of_positions(number_of_disks) == expected
 
 
 # -- Exercise 2 --

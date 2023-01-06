@@ -22,7 +22,7 @@ def r(b: pd.DataFrame) -> None:
 
 
 def test_bdr(b: pd.DataFrame, d: None, r: None) -> None:
-    assert list(b.columns) == "?"
+    assert list(b.columns) == ['b', 'd', 'r']
 
 
 # -- Exercise 2 --
@@ -33,6 +33,17 @@ def test_bdr(b: pd.DataFrame, d: None, r: None) -> None:
 # It's possible to pass data from a test to a fixture, so the result of a fixture depends on data in the test. Let's
 # create a fixture that returns the start position of the puzzle and use it in a test. The fixture depends on the size
 # of the puzzle. Documentation https://docs.pytest.org/en/6.2.x/fixture.html#using-markers-to-pass-data-to-fixtures.
+@pytest.fixture(scope="session")
+def start_position():
+    def _start_position(number_of_disks):
+        return number_of_disks * "a"
+    return _start_position
+
+
+def test_start_position(start_position):
+    number_of_disks = 3
+    output = start_position(number_of_disks)
+    assert output == "aaa"
 
 
 # -- Exercise 4 --

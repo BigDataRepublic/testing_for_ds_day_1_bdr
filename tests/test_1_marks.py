@@ -1,3 +1,5 @@
+import pytest
+
 from hanoi.basics import Position, number_of_positions, number_of_steps_of_solution
 
 
@@ -25,6 +27,12 @@ def test_number_of_positions() -> None:
 # Tower of Hanoi with n disks. Write a test with multiple asserts, that checks if your implementation is correct if the
 # number of disks is 1, 2 or 3.
 
+def test_number_of_steps_of_solution() -> None:
+    number_of_disks = 2
+    result = number_of_steps_of_solution(number_of_disks=number_of_disks)
+    expected_result = 3
+    assert result == expected_result
+
 
 # -- Exercise 5 --
 # Write a test that checks whether the solution for 1000 disks takes more than 1000 steps. But use marks to skip it if
@@ -34,6 +42,7 @@ def test_number_of_positions() -> None:
 # -- Exercise 6* --
 # If you call number_of_steps_of_solution() with a string as input, it probably raises an error. For now, we don't know
 # how to handle this properly, so mark the test as a failure.
+@pytest.mark.xfail(reason="Tests are failing because of wrong input")
 def test_wrong_input() -> None:
     number_of_steps_of_solution(number_of_disks="12")  # type: ignore
 
