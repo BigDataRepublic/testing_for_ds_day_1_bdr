@@ -1,3 +1,5 @@
+import pytest
+
 from hanoi.basics import Position, number_of_positions, number_of_steps_of_solution
 
 
@@ -39,6 +41,7 @@ def test_number_of_steps_of_solution() -> None:
 # -- Exercise 6* --
 # If you call number_of_steps_of_solution() with a string as input, it probably raises an error. For now, we don't know
 # how to handle this properly, so mark the test as a failure.
+@pytest.mark.xfail(reason="No way of currently testing this")
 def test_wrong_input() -> None:
     number_of_steps_of_solution(number_of_disks="12")  # type: ignore
 
