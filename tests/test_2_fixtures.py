@@ -1,4 +1,4 @@
-from typing import Iterator, List
+from typing import Callable, Iterator, List
 
 import pandas as pd
 import pytest
@@ -6,7 +6,7 @@ import pytest
 
 # -- Exercise 1* --
 # If one fixture is (indirectly) requested multiple times for the same test, the value is cached. Make the test pass.
-@pytest.fixture
+@pytest.fixture()
 def b() -> pd.DataFrame:
     yield pd.DataFrame(columns=["b"])
 
@@ -22,7 +22,7 @@ def r(b: pd.DataFrame) -> None:
 
 
 def test_bdr(b: pd.DataFrame, d: None, r: None) -> None:
-    assert list(b.columns) == "?"
+    assert list(b.columns) == ['b', 'd', 'r']
 
 
 # -- Exercise 2 --
@@ -33,6 +33,17 @@ def test_bdr(b: pd.DataFrame, d: None, r: None) -> None:
 # It's possible to pass data from a test to a fixture, so the result of a fixture depends on data in the test. Let's
 # create a fixture that returns the start position of the puzzle and use it in a test. The fixture depends on the size
 # of the puzzle. Documentation https://docs.pytest.org/en/6.2.x/fixture.html#using-markers-to-pass-data-to-fixtures.
+@pytest.fixture(scope="function")
+def start_position() -> Callable:
+    def _start_position(number_of_disks: int) -> str:
+        start_position = number_of_disks * "a"
+        return start_position
+    return _start_position
+
+
+def test_start_position(start_position: Callable) -> None:
+    output = start_position(3)
+    assert output == "aaa"
 
 
 # -- Exercise 4 --
